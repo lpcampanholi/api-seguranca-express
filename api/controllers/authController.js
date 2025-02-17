@@ -6,9 +6,9 @@ class AuthController {
     const { email, senha } = req.body;
     try {
       const token = await authService.login({ email, senha });
-      res.status(200).send(token);
+      res.status(200).json(token);
     } catch (error) {
-      res.status(401).send({ message: error.message });
+      res.status(401).json({ message: error.message });
     }
   }
 }

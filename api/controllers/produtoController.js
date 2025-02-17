@@ -13,7 +13,7 @@ class ProdutoController {
       res.status(201).json(produto);
     } catch (error) {
       console.log("Message error: ", error.message);
-      res.status(400).send({ message: error.message });
+      res.status(400).json({ message: error.message });
     }
   }
 
@@ -24,7 +24,7 @@ class ProdutoController {
       res.status(200).json(produto);
     } catch (error) {
       console.log("Message error: ", error.message);
-      res.status(400).send({ message: error.message });
+      res.status(400).json({ message: error.message });
     }
   }
 
@@ -46,7 +46,7 @@ class ProdutoController {
       res.status(200).json(produto);
     } catch (error) {
       console.log("Message error: ", error.message);
-      res.status(400).send({ message: error.message });
+      res.status(400).json({ message: error.message });
     }
   }
 
@@ -54,10 +54,10 @@ class ProdutoController {
     const { id } = req.params;
     try {
       await produtoService.deletarProdutoPorId(id);
-      res.status(200).send({ message: "Produto excluído com sucesso!" });
+      res.status(200).json({ message: "Produto excluído com sucesso!" });
     } catch (error) {
       console.log("Message error: ", error.message);
-      res.status(400).send({ message: error.message });
+      res.status(400).json({ message: error.message });
     }
   }
 }

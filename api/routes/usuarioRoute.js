@@ -9,8 +9,8 @@ router.use(autenticado);
 router
   .post("/usuarios", UsuarioController.cadastrar)
   .get("/usuarios", UsuarioController.buscarTodos)
-  .get("/usuarios/id/:id", UsuarioController.buscarPorId)
-  .put("/usuarios/id/:id", UsuarioController.editar)
-  .delete("/usuarios/id/:id", UsuarioController.excluirPorId);
+  .get("/usuarios/:id", UsuarioController.buscarPorId)
+  .put("/usuarios/:id", UsuarioController.editar)
+  .delete("/usuarios/:id", UsuarioController.excluirPorId);
 
 module.exports = router;

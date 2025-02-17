@@ -1,13 +1,13 @@
-const UsuarioService = require("../services/usuarioService");
+const RoleService = require("../services/roleService");
 
-const usuarioService = new UsuarioService();
+const roleService = new RoleService();
 
-class UsuarioController {
+class RoleController {
   static async cadastrar(req, res) {
-    const { nome, email, senha } = req.body;
+    const { nome, descricao } = req.body;
     try {
-      const usuario = await usuarioService.cadastrar({ nome, email, senha });
-      res.status(201).json(usuario);
+      const role = await roleService.cadastrar({ nome, descricao });
+      res.status(201).json(role);
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
@@ -16,8 +16,8 @@ class UsuarioController {
   static async buscarPorId(req, res) {
     const { id } = req.params;
     try {
-      const usuario = await usuarioService.buscarPorId(id);
-      res.status(200).json(usuario);
+      const role = await roleService.buscarPorId(id);
+      res.status(200).json(role);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
@@ -25,8 +25,8 @@ class UsuarioController {
 
   static async buscarTodos(req, res) {
     try {
-      const usuarios = await usuarioService.buscarTodos();
-      res.status(200).json(usuarios);
+      const roles = await roleService.buscarTodos();
+      res.status(200).json(roles);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
@@ -36,13 +36,12 @@ class UsuarioController {
     const { id } = req.params;
     const { nome, email, senha } = req.body;
     try {
-      const usuario = await usuarioService.editar({
+      const role = await roleService.editar({
         id,
         nome,
-        email,
-        senha,
+        descricao,
       });
-      res.status(200).json(usuario);
+      res.status(200).json(role);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
@@ -51,12 +50,12 @@ class UsuarioController {
   static async excluirPorId(req, res) {
     const { id } = req.params;
     try {
-      await usuarioService.excluirPorId(id);
-      res.status(200).json({ message: "Usuário excluído com sucesso" });
+      await roleService.excluirPorId(id);
+      res.status(200).json({ message: "Role excluído com sucesso" });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
   }
 }
 
-module.exports = UsuarioController;
+module.exports = RoleController;
