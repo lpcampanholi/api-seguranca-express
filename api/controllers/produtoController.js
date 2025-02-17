@@ -17,6 +17,11 @@ class ProdutoController {
     }
   }
 
+  static async buscarTodosProdutos(req, res) {
+    const produtos = await produtoService.buscarTodosProdutos();
+    res.status(200).json(produtos);
+  }
+
   static async buscarProdutoPorId(req, res) {
     try {
       const { id } = req.params;
@@ -26,11 +31,6 @@ class ProdutoController {
       console.log("Message error: ", error.message);
       res.status(400).json({ message: error.message });
     }
-  }
-
-  static async buscarTodosProdutos(req, res) {
-    const produtos = await produtoService.buscarTodosProdutos();
-    res.status(200).json(produtos);
   }
 
   static async editarProduto(req, res) {

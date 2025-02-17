@@ -13,20 +13,20 @@ class RoleController {
     }
   }
 
-  static async buscarPorId(req, res) {
-    const { id } = req.params;
+  static async buscarTodos(req, res) {
     try {
-      const role = await roleService.buscarPorId(id);
-      res.status(200).json(role);
+      const roles = await roleService.buscarTodos();
+      res.status(200).json(roles);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
   }
 
-  static async buscarTodos(req, res) {
+  static async buscarPorId(req, res) {
+    const { id } = req.params;
     try {
-      const roles = await roleService.buscarTodos();
-      res.status(200).json(roles);
+      const role = await roleService.buscarPorId(id);
+      res.status(200).json(role);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }

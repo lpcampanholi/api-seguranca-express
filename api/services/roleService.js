@@ -23,6 +23,11 @@ class RoleService {
     }
   }
 
+  async buscarTodos() {
+    const roles = await database.roles.findAll();
+    return roles;
+  }
+
   async buscarPorId(id) {
     const role = await database.roles.findOne({
       where: {
@@ -33,11 +38,6 @@ class RoleService {
       throw new Error("Role informado não encontrado");
     }
     return role;
-  }
-
-  async buscarTodos() {
-    const roles = await database.roles.findAll();
-    return roles;
   }
 
   async editar(dto) {

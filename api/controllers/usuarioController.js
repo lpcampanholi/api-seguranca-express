@@ -13,20 +13,20 @@ class UsuarioController {
     }
   }
 
-  static async buscarPorId(req, res) {
-    const { id } = req.params;
+  static async buscarTodos(req, res) {
     try {
-      const usuario = await usuarioService.buscarPorId(id);
-      res.status(200).json(usuario);
+      const usuarios = await usuarioService.buscarTodos();
+      res.status(200).json(usuarios);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
   }
 
-  static async buscarTodos(req, res) {
+  static async buscarPorId(req, res) {
+    const { id } = req.params;
     try {
-      const usuarios = await usuarioService.buscarTodos();
-      res.status(200).json(usuarios);
+      const usuario = await usuarioService.buscarPorId(id);
+      res.status(200).json(usuario);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }

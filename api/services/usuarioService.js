@@ -26,6 +26,11 @@ class UsuarioService {
     }
   }
 
+  async buscarTodos() {
+    const usuarios = await database.usuarios.findAll();
+    return usuarios;
+  }
+
   async buscarPorId(id) {
     const usuario = await database.usuarios.findOne({
       where: {
@@ -36,11 +41,6 @@ class UsuarioService {
       throw new Error("Usuário informado não encontrado");
     }
     return usuario;
-  }
-
-  async buscarTodos() {
-    const usuarios = await database.usuarios.findAll();
-    return usuarios;
   }
 
   async editar(dto) {
