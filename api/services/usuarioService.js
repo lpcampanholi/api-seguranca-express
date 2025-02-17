@@ -22,7 +22,7 @@ class UsuarioService {
       });
       return novoUsuario;
     } catch (error) {
-      throw error;
+      throw new Error("Erro ao cadastrar usuário");
     }
   }
 
@@ -44,34 +44,19 @@ class UsuarioService {
   }
 
   async editar(dto) {
-    const usuario = await database.usuarios.findOne({
-      where: {
-        id: dto.id,
-      },
-    });
-    if (!usuario) {
-      throw new Error("Usuário informado não cadastrado");
-    }
+    const usuario = await this.buscarPorId(dto.id);
     try {
       usuario.nome = dto.nome;
       usuario.email = dto.email;
-      usuario.senha = dto.senha;
-      await produto.save();
-      return produto.reload();
+      await usuario.save();
+      return usuario;
     } catch (error) {
-      throw error;
+      throw new Error("Erro ao editar usuário");
     }
   }
 
   async excluirPorId(id) {
-    const usuario = await database.usuarios.findOne({
-      where: {
-        id: id,
-      },
-    });
-    if (!usuario) {
-      throw new Error("Usuário informado não cadastrado");
-    }
+    await this.buscarPorId(id);
     try {
       await database.usuarios.destroy({
         where: {
@@ -79,7 +64,7 @@ class UsuarioService {
         },
       });
     } catch (error) {
-      throw error;
+      throw new Error("Erro ao tentar usuário");
     }
   }
 }
