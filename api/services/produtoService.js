@@ -8,11 +8,9 @@ class ProdutoService {
         nome: dto.nome,
       },
     });
-
     if (produto) {
       throw new Error("Produto já cadastrado");
     }
-
     try {
       const newProduto = await database.produtos.create({
         id: uuidv4(),
@@ -20,7 +18,6 @@ class ProdutoService {
         descricao: dto.descricao,
         preco: dto.preco,
       });
-
       return newProduto;
     } catch (error) {
       console.error("Message error: ", error.message);
@@ -33,18 +30,15 @@ class ProdutoService {
 
     return produtos;
   }
-
   async buscarProdutoPorId(id) {
     const produto = await database.produtos.findOne({
       where: {
         id: id,
       },
     });
-
     if (!produto) {
       throw new Error("Produto informado não cadastrado!");
     }
-
     return produto;
   }
 
@@ -54,11 +48,9 @@ class ProdutoService {
         id: id,
       },
     });
-
     if (!produto) {
       throw new Error("Produto informado não cadastrado!");
     }
-
     try {
       await database.produtos.destroy({
         where: {
@@ -77,18 +69,14 @@ class ProdutoService {
         id: dto.id,
       },
     });
-
     if (!produto) {
       throw new Error("Produto informado não cadastrado!");
     }
-
     try {
       produto.nome = dto.nome;
       produto.descricao = dto.descricao;
       produto.preco = dto.preco;
-
       await produto.save();
-
       return await produto.reload();
     } catch (error) {
       console.error("Message error: ", error.message);
