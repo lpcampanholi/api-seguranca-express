@@ -16,7 +16,7 @@ class PermissaoService {
         nome: dto.nome,
         descricao: dto.descricao,
       });
-      return novaPermissao;
+      return novaPermissao;np
     } catch (error) {
       throw new Error("Erro ao cadastrar permissão");
     }
