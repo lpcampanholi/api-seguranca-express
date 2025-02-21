@@ -1,6 +1,6 @@
-const database = require("../models");
-const { hash } = require("bcryptjs");
-const uuid = require("uuid");
+import database from "../models";
+import { hash } from "bcryptjs";
+import uuid from "uuid";
 
 class UsuarioService {
   async cadastrar(dto) {
@@ -69,4 +69,4 @@ class UsuarioService {
   }
 }
 
-module.exports = UsuarioService;
+export default UsuarioService;

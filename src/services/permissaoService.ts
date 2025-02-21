@@ -1,4 +1,4 @@
-const database = require("../models");
+import database from "../models";
 
 class PermissaoService {
   async cadastrar(dto) {
@@ -16,7 +16,7 @@ class PermissaoService {
         nome: dto.nome,
         descricao: dto.descricao,
       });
-      return novaPermissao;np
+      return novaPermissao;
     } catch (error) {
       throw new Error("Erro ao cadastrar permissão");
     }
@@ -65,4 +65,4 @@ class PermissaoService {
   }
 }
 
-module.exports = PermissaoService;
+export default PermissaoService;

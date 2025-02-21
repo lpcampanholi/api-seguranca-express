@@ -1,5 +1,5 @@
-const database = require("../models");
-const uuid = require("uuid");
+import database from "../models";
+import uuid from "uuid";
 
 class RoleService {
   async cadastrar(dto) {
@@ -66,4 +66,4 @@ class RoleService {
   }
 }
 
-module.exports = RoleService;
+export default RoleService;

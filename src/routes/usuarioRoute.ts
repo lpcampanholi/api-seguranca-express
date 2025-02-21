@@ -1,6 +1,6 @@
-const { Router } = require("express");
-const UsuarioController = require("../controllers/usuarioController");
-const autenticado = require("../middlewares/autenticado");
+import { Router } from "express";
+import UsuarioController from "../controllers/usuarioController";
+import autenticado from "../middlewares/autenticado";
 
 const router = Router();
 
@@ -13,4 +13,4 @@ router
   .put("/usuarios/:id", UsuarioController.editar)
   .delete("/usuarios/:id", UsuarioController.excluirPorId);
 
-module.exports = router;
+export default router;

@@ -1,5 +1,5 @@
-const { Router } = require("express");
-const PermissaoController = require("../controllers/permissaoController");
+import { Router } from "express";
+import PermissaoController from "../controllers/permissaoController";
 
 const router = Router();
 
@@ -10,4 +10,4 @@ router
   .put("/permissoes/:id", PermissaoController.editar)
   .delete("/permissoes/:id", PermissaoController.excluir);
 
-module.exports = router;
+export default router;

@@ -1,7 +1,8 @@
-const { verify, decode } = require("jsonwebtoken");
-const jsonSecret = require("../config/jsonSecret");
+import { Request, Response, NextFunction, RequestHandler } from "express";
+import { verify, decode } from "jsonwebtoken";
+import jsonSecret from "../config/jsonSecret";
 
-module.exports = async (req, res, next) => {
+const autenticado: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers.authorization;
   if (!token) {
     return res.status(401).send("Access token não informado");
@@ -17,3 +18,5 @@ module.exports = async (req, res, next) => {
     res.status(401).send("Usuário não autorizado");
   }
 };
+
+export default autenticado;

@@ -1,5 +1,5 @@
-const { Router } = require("express");
-const RoleController = require("../controllers/roleController");
+import { Router } from "express";
+import RoleController from "../controllers/roleController";
 
 const router = Router();
 
@@ -10,4 +10,4 @@ router
   .put("/roles/:id", RoleController.editar)
   .delete("/roles/:id", RoleController.excluirPorId);
 
-module.exports = router;
+export default router;

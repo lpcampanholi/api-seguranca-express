@@ -1,7 +1,7 @@
-const database = require("../models");
-const { compare } = require("bcryptjs");
-const { sign } = require("jsonwebtoken");
-const jsonSecret = require("../config/jsonSecret");
+import database from "../models";
+import { compare } from "bcryptjs";
+import { sign } from "jsonwebtoken";
+import jsonSecret from "../config/jsonSecret";
 
 class AuthService {
   async login(dto) {
@@ -32,4 +32,4 @@ class AuthService {
   }
 }
 
-module.exports = AuthService;
+export default AuthService;
